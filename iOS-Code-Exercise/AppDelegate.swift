@@ -16,6 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+       
+        //Setup RootView Controller
+        setupRootView()
         return true
     }
 
@@ -41,6 +44,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    /**
+     Added this function, to setup rootview as Storyboard is not used.
+     **/
+    func setupRootView(){
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let feedTableVC = FeedTableViewController(style: .plain)
+        let navigationController = UINavigationController(rootViewController:feedTableVC)
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
+    }
 
 }
 
