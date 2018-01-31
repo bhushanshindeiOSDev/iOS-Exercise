@@ -13,6 +13,7 @@ class FeedTableViewController: UITableViewController {
     //var feedDataArray : [FeedModel] = Array()
     let viewModelInstance = ViewModel()
     var barTitle : String?
+    var activityIndicator : UIActivityIndicatorView!
     var tableRows : [row] = Array()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,16 +27,30 @@ class FeedTableViewController: UITableViewController {
     }
     
     func requestData(){
+        displayBusyIndicator()
         viewModelInstance.requestDataFromNetworkManager { (rows,title) in
             if (rows.isEmpty){
                 print("No Data found!")
             }else{
               self.tableRows = rows
                 DispatchQueue.main.async {
+                   self.hideBusyIndicator()
+                    self.navigationItem.title = title
                    self.tableView.reloadData()
                 }
             }
         }
+    }
+    
+    func displayBusyIndicator(){
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle:.gray)
+        activityIndicator.startAnimating()
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.center = self.tableView.center
+        self.tableView.addSubview(activityIndicator)
+    }
+    func hideBusyIndicator(){
+       activityIndicator.stopAnimating()
     }
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -49,9 +64,11 @@ class FeedTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : FeedTableViewCell =  tableView.dequeueReusableCell(withIdentifier:reuseCellIdentifier, for: indexPath) as! FeedTableViewCell
+        cell.selectionStyle = .none
         let tableRow = tableRows[indexPath.row]
         cell.titleLbl.text = tableRow.title!
         cell.descriptionLbl.text = tableRow.description!
+        cell.imgView.image = UIImage(named:"Placeholder")
         viewModelInstance.getImageForCell(url:tableRow.imageHref!) { (cellImage) in
             DispatchQueue.main.async {
                 cell.imgView.image = cellImage

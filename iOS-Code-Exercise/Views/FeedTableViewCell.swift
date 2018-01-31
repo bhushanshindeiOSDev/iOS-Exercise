@@ -28,7 +28,10 @@ class FeedTableViewCell: UITableViewCell {
         self.contentView.addSubview(titleLbl)
         self.contentView.addSubview(descriptionLbl)
         self.contentView.addSubview(imgView)
+        //self.backgroundColor = UIColor.red
         
+    }
+    override func layoutSubviews() {
         //Set Constraints to subviews
         setImageViewConstraints()
         setTitleLabelConstraints()
@@ -36,7 +39,6 @@ class FeedTableViewCell: UITableViewCell {
         //setContentViewConstraints()
         setCellFormatting()
     }
-    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
@@ -48,7 +50,7 @@ class FeedTableViewCell: UITableViewCell {
         self.titleLbl.numberOfLines = 0
         self.titleLbl.lineBreakMode = .byWordWrapping
         self.titleLbl.textColor = UIColor.black
-        self.titleLbl.textAlignment = .center
+        self.titleLbl.textAlignment = .left
         self.titleLbl.font = UIFont.systemFont(ofSize:12)
         
         // Set formatting to description label
@@ -56,13 +58,13 @@ class FeedTableViewCell: UITableViewCell {
         self.descriptionLbl.lineBreakMode = .byWordWrapping
         self.descriptionLbl.textColor = UIColor.black
         self.descriptionLbl.textAlignment = .left
-        self.descriptionLbl.font = UIFont.systemFont(ofSize:12)
+        self.descriptionLbl.font = UIFont.systemFont(ofSize:10)
         
     }
     func setImageViewConstraints(){
        
         self.imgView.translatesAutoresizingMaskIntoConstraints = false
-        self.imgView.backgroundColor = UIColor.red
+        //self.imgView.backgroundColor = UIColor.red
         let constraintWidth = NSLayoutConstraint(item:self.imgView, attribute:.width, relatedBy:.equal, toItem:nil, attribute:.notAnAttribute, multiplier: 1, constant: 50)
         
         let constraintHeight = NSLayoutConstraint(item:self.imgView, attribute:.height, relatedBy:.equal, toItem:nil, attribute:.notAnAttribute, multiplier:1, constant:50)
@@ -77,7 +79,7 @@ class FeedTableViewCell: UITableViewCell {
     func setTitleLabelConstraints(){
         
         self.titleLbl.translatesAutoresizingMaskIntoConstraints = false
-        self.titleLbl.backgroundColor = UIColor.blue
+        //self.titleLbl.backgroundColor = UIColor.blue
         
         let constraintHeight = NSLayoutConstraint(item:self.titleLbl, attribute:.height, relatedBy:.equal, toItem:nil, attribute:.notAnAttribute, multiplier:1, constant:20)
         
@@ -92,7 +94,7 @@ class FeedTableViewCell: UITableViewCell {
     func setDescriptionLabelConstraints(){
         
         self.descriptionLbl.translatesAutoresizingMaskIntoConstraints = false
-        self.descriptionLbl.backgroundColor = UIColor.gray
+        //self.descriptionLbl.backgroundColor = UIColor.gray
         
         let constraintLeading = NSLayoutConstraint(item: self.descriptionLbl, attribute: .leading, relatedBy:.equal, toItem:self.imgView, attribute:.trailing, multiplier:1, constant:10)
         
@@ -100,17 +102,19 @@ class FeedTableViewCell: UITableViewCell {
         
         let constraintTop = NSLayoutConstraint(item:self.descriptionLbl, attribute:.top, relatedBy:.equal, toItem:self.titleLbl, attribute:.bottom, multiplier:1, constant:8)
         
-        let constraintBottom = NSLayoutConstraint(item:self.descriptionLbl, attribute:.bottom, relatedBy:.greaterThanOrEqual, toItem:self.descriptionLbl.superview, attribute:.bottom, multiplier:1, constant:5)
+        let constraintBottom = NSLayoutConstraint(item:self.descriptionLbl, attribute:.bottom, relatedBy:.equal, toItem:self.contentView, attribute:.bottom, multiplier:1, constant:5)
         NSLayoutConstraint.activate([constraintLeading,constraintTrailing,constraintTop,constraintBottom])
     }
     
     func setContentViewConstraints(){
      
-        let constraintTop = NSLayoutConstraint(item:self.contentView, attribute:.top, relatedBy:.equal, toItem:self.contentView, attribute:.bottom, multiplier:1, constant:0)
+        //self.contentView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let constraintTop = NSLayoutConstraint(item:self.contentView, attribute:.top, relatedBy:.equal, toItem:self.contentView.superview, attribute:.top, multiplier:1, constant:0)
         
         let constraintBottom = NSLayoutConstraint(item:self.contentView, attribute:.bottom, relatedBy:.equal, toItem:self.contentView.superview, attribute:.bottom, multiplier: 1, constant: 0)
         
-        let constraintLeading = NSLayoutConstraint(item:self.contentView, attribute:.leading, relatedBy:.equal, toItem:self.contentView.superview, attribute:.trailing, multiplier: 1, constant: 0)
+        let constraintLeading = NSLayoutConstraint(item:self.contentView, attribute:.leading, relatedBy:.equal, toItem:self.contentView.superview, attribute:.leading, multiplier: 1, constant: 0)
         
         let constraintTrailing = NSLayoutConstraint(item:self.contentView, attribute:.trailing, relatedBy:.equal, toItem:self.contentView.superview, attribute:.trailing, multiplier:1, constant: 0)
         
