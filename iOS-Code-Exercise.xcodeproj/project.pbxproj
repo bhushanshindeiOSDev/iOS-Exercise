@@ -15,6 +15,14 @@
 		8BFE9DA82020E150003C0A2D /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE9DA62020E150003C0A2D /* FeedTableViewController.swift */; };
 		8BFE9DAB2020E4F6003C0A2D /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE9DAA2020E4F6003C0A2D /* FeedTableViewCell.swift */; };
 		8BFE9DAC2020E4F6003C0A2D /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE9DAA2020E4F6003C0A2D /* FeedTableViewCell.swift */; };
+		8BFE9DAE202171B1003C0A2D /* NetworkRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE9DAD202171B0003C0A2D /* NetworkRequestManager.swift */; };
+		8BFE9DAF202171B1003C0A2D /* NetworkRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE9DAD202171B0003C0A2D /* NetworkRequestManager.swift */; };
+		8BFE9DB12021770D003C0A2D /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE9DB02021770D003C0A2D /* FeedModel.swift */; };
+		8BFE9DB22021770D003C0A2D /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE9DB02021770D003C0A2D /* FeedModel.swift */; };
+		8BFE9DB42021862F003C0A2D /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE9DB32021862F003C0A2D /* RootViewController.swift */; };
+		8BFE9DB52021862F003C0A2D /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE9DB32021862F003C0A2D /* RootViewController.swift */; };
+		8BFE9DB7202190B5003C0A2D /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE9DB6202190B4003C0A2D /* ViewModel.swift */; };
+		8BFE9DB8202190B5003C0A2D /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE9DB6202190B4003C0A2D /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +46,10 @@
 		8BFE9D982020D8A9003C0A2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BFE9DA62020E150003C0A2D /* FeedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
 		8BFE9DAA2020E4F6003C0A2D /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
+		8BFE9DAD202171B0003C0A2D /* NetworkRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestManager.swift; sourceTree = "<group>"; };
+		8BFE9DB02021770D003C0A2D /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
+		8BFE9DB32021862F003C0A2D /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		8BFE9DB6202190B4003C0A2D /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				8BFE9DA62020E150003C0A2D /* FeedTableViewController.swift */,
+				8BFE9DB32021862F003C0A2D /* RootViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -111,6 +124,8 @@
 		8BFE9DA22020DDEB003C0A2D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8BFE9DAD202171B0003C0A2D /* NetworkRequestManager.swift */,
+				8BFE9DB02021770D003C0A2D /* FeedModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -118,6 +133,7 @@
 		8BFE9DA42020DE05003C0A2D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				8BFE9DB6202190B4003C0A2D /* ViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -232,9 +248,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BFE9DAE202171B1003C0A2D /* NetworkRequestManager.swift in Sources */,
 				8BFE9D822020D8A7003C0A2D /* AppDelegate.swift in Sources */,
+				8BFE9DB42021862F003C0A2D /* RootViewController.swift in Sources */,
+				8BFE9DB12021770D003C0A2D /* FeedModel.swift in Sources */,
 				8BFE9DAB2020E4F6003C0A2D /* FeedTableViewCell.swift in Sources */,
 				8BFE9DA72020E150003C0A2D /* FeedTableViewController.swift in Sources */,
+				8BFE9DB7202190B5003C0A2D /* ViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,9 +262,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BFE9DAF202171B1003C0A2D /* NetworkRequestManager.swift in Sources */,
 				8BFE9D972020D8A9003C0A2D /* iOS_Code_ExerciseTests.swift in Sources */,
+				8BFE9DB52021862F003C0A2D /* RootViewController.swift in Sources */,
+				8BFE9DB22021770D003C0A2D /* FeedModel.swift in Sources */,
 				8BFE9DAC2020E4F6003C0A2D /* FeedTableViewCell.swift in Sources */,
 				8BFE9DA82020E150003C0A2D /* FeedTableViewController.swift in Sources */,
+				8BFE9DB8202190B5003C0A2D /* ViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
