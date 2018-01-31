@@ -37,7 +37,7 @@ class FeedTableViewCell: UITableViewCell {
         setImageViewConstraints()
         setTitleLabelConstraints()
         setDescriptionLabelConstraints()
-        //setContentViewConstraints()
+        
         setCellFormatting()
         self.contentView.setNeedsLayout()
         self.contentView.layoutIfNeeded()
@@ -107,20 +107,5 @@ class FeedTableViewCell: UITableViewCell {
         
         let constraintBottom = NSLayoutConstraint(item:self.descriptionLbl, attribute:.bottom, relatedBy:.equal, toItem:self.contentView, attribute:.bottom, multiplier:1, constant:5)
         NSLayoutConstraint.activate([constraintLeading,constraintTrailing,constraintTop,constraintBottom])
-    }
-    
-    func setContentViewConstraints(){
-     
-        //self.contentView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let constraintTop = NSLayoutConstraint(item:self.contentView, attribute:.top, relatedBy:.equal, toItem:self.contentView.superview, attribute:.top, multiplier:1, constant:0)
-        
-        let constraintBottom = NSLayoutConstraint(item:self.contentView, attribute:.bottom, relatedBy:.equal, toItem:self.contentView.superview, attribute:.bottom, multiplier: 1, constant: 0)
-        
-        let constraintLeading = NSLayoutConstraint(item:self.contentView, attribute:.leading, relatedBy:.equal, toItem:self.contentView.superview, attribute:.leading, multiplier: 1, constant: 0)
-        
-        let constraintTrailing = NSLayoutConstraint(item:self.contentView, attribute:.trailing, relatedBy:.equal, toItem:self.contentView.superview, attribute:.trailing, multiplier:1, constant: 0)
-        
-        NSLayoutConstraint.activate([constraintTop,constraintBottom,constraintLeading,constraintTrailing])
     }
 }
