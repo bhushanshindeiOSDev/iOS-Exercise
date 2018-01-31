@@ -12,6 +12,7 @@ class NetworkRequestManager {
     
   let jsonFeedUrl = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
     var feedRows : [row] = Array()
+    //MARK:// Get json feed data from url
     func makeNetworkRequest(_ completion:@escaping ([row],String?)->()){
         //Check if given string can be converted to URL. Otherwise return
         guard let url = URL(string: jsonFeedUrl) else {return }
@@ -33,16 +34,16 @@ class NetworkRequestManager {
                     
                 }else{
                     print("Error occured while converting string to data")
-                    //completion(self.feedRows)
+                    completion(self.feedRows,nil)
                 }
             }catch let error{
                 print("Error occured:",error.localizedDescription)
-                //completion(self.feedRows)
+                completion(self.feedRows,nil)
             }
         }
         dataTask.resume()
     }
-    
+    //MARK:// Download image from url asynchronously
     func downloadImageFromURL(imageURL:String, completionHandler:@escaping (UIImage)->()){
         guard let url = URL(string: imageURL) else {return }
         let imageDataTask = URLSession.shared.dataTask(with:url){ (data,urlResponse, error) in

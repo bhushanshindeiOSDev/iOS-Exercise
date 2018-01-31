@@ -6,11 +6,19 @@
 //  Copyright © 2018 Bhushan Shinde. All rights reserved.
 //
 
+/**
+ View model class, communicates to Model layer.
+ When data has been received from model, it checks it
+ for basic validations. Pass back data to view using
+ completionHandler.
+ **/
+
 import Foundation
 import UIKit
 class ViewModel {
     
     var feedRows : [row] = Array()
+    
     func requestDataFromNetworkManager(_ completion:@escaping ([row],String?)->()) {
         let networkRequest = NetworkRequestManager()
         networkRequest.makeNetworkRequest { (feedRows,title) in
@@ -40,7 +48,7 @@ class ViewModel {
             }
         }
     }
-    
+    //MARK: Method to initiate specific image download.
     func getImageForCell(url:String, completionHandler:@escaping (UIImage)->()){
       let networkRequest = NetworkRequestManager()
         networkRequest.downloadImageFromURL(imageURL:url) { image in

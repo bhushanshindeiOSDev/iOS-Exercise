@@ -15,13 +15,15 @@ class FeedTableViewController: UITableViewController {
     var barTitle : String?
     var activityIndicator : UIActivityIndicatorView!
     var tableRows : [row] = Array()
+    var rowHeight : CGFloat = 90
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //self.tableView.setf
         self.tableView.register(FeedTableViewCell.self, forCellReuseIdentifier:reuseCellIdentifier)
         self.tableView.estimatedRowHeight = UITableViewAutomaticDimension;
-        self.tableView.rowHeight = 90;
+        self.tableView.rowHeight = rowHeight;
         
         requestData()
     }
@@ -65,10 +67,13 @@ class FeedTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : FeedTableViewCell =  tableView.dequeueReusableCell(withIdentifier:reuseCellIdentifier, for: indexPath) as! FeedTableViewCell
         cell.selectionStyle = .none
+        tableView.separatorStyle = .singleLine
         let tableRow = tableRows[indexPath.row]
         cell.titleLbl.text = tableRow.title!
         cell.descriptionLbl.text = tableRow.description!
+        cell.descriptionLbl.sizeToFit()
         cell.imgView.image = UIImage(named:"Placeholder")
+        cell.imgView.contentMode = .scaleAspectFit
         viewModelInstance.getImageForCell(url:tableRow.imageHref!) { (cellImage) in
             DispatchQueue.main.async {
                 cell.imgView.image = cellImage
@@ -79,8 +84,19 @@ class FeedTableViewController: UITableViewController {
     // MARK: - Table view Delegates
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        let row = tableRows[indexPath.row]
+        let description : NSString = row.description! as NSString
+        let descriptionFont = UIFont.systemFont(ofSize:12)
+        let size = CGSize(width:260.0, height:Double(MAXFLOAT))
+        let newRowSize = description.boundingRect(with:size, options:.usesLineFragmentOrigin, attributes: [kCTFontAttributeName as NSAttributedStringKey : descriptionFont], context:nil)
+        let newHeight = newRowSize.size.height + 20.0
+        return newHeight
+        //return rowHeight
     }
     
-    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 5
+    }
 }
+
+

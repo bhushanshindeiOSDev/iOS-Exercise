@@ -5,6 +5,10 @@
 //  Created by Bhushan Shinde on 30/01/18.
 //  Copyright © 2018 Bhushan Shinde. All rights reserved.
 //
+/**
+ FeedTableViewCell is custom class for cell.
+ It is used to create required layout and set up constraints programmatically.
+ */
 
 import UIKit
 
@@ -14,10 +18,7 @@ class FeedTableViewCell: UITableViewCell {
     var descriptionLbl = UILabel()
     var imgView = UIImageView()
     
-    /*override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }*/
+   
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -38,6 +39,8 @@ class FeedTableViewCell: UITableViewCell {
         setDescriptionLabelConstraints()
         //setContentViewConstraints()
         setCellFormatting()
+        self.contentView.setNeedsLayout()
+        self.contentView.layoutIfNeeded()
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -71,7 +74,7 @@ class FeedTableViewCell: UITableViewCell {
         
         let constraintLeading = NSLayoutConstraint(item:self.imgView, attribute:.leading, relatedBy:.equal, toItem:self.imgView.superview, attribute:.leading, multiplier: 1, constant:0)
         
-        let constraintTop = NSLayoutConstraint(item:self.imgView, attribute:.top, relatedBy:.equal, toItem:self.imgView.superview, attribute:.centerY, multiplier:1, constant:0)
+        let constraintTop = NSLayoutConstraint(item:self.imgView, attribute:.top, relatedBy:.equal, toItem:self.imgView.superview, attribute:.top, multiplier:1, constant:0)
         NSLayoutConstraint.activate([constraintWidth,constraintHeight,constraintLeading,constraintTop])
         
     }
@@ -87,7 +90,7 @@ class FeedTableViewCell: UITableViewCell {
         
         let constraintTrailing = NSLayoutConstraint(item:self.titleLbl, attribute:.trailing, relatedBy:.equal, toItem:self.titleLbl.superview, attribute:.trailing, multiplier:1, constant:10)
         
-        let constraintTop = NSLayoutConstraint(item:self.titleLbl, attribute:.top, relatedBy:.equal, toItem:self.titleLbl.superview, attribute:.top, multiplier:1, constant:8)
+        let constraintTop = NSLayoutConstraint(item:self.titleLbl, attribute:.top, relatedBy:.equal, toItem:self.titleLbl.superview, attribute:.top, multiplier:1, constant:3)
         NSLayoutConstraint.activate([constraintHeight,constraintLeading,constraintTrailing,constraintTop])
     }
     
@@ -100,7 +103,7 @@ class FeedTableViewCell: UITableViewCell {
         
         let constraintTrailing = NSLayoutConstraint(item:self.descriptionLbl, attribute:.trailing, relatedBy:.equal, toItem:self.descriptionLbl.superview, attribute:.trailing, multiplier:1, constant:10)
         
-        let constraintTop = NSLayoutConstraint(item:self.descriptionLbl, attribute:.top, relatedBy:.equal, toItem:self.titleLbl, attribute:.bottom, multiplier:1, constant:8)
+        let constraintTop = NSLayoutConstraint(item:self.descriptionLbl, attribute:.top, relatedBy:.equal, toItem:self.titleLbl, attribute:.bottom, multiplier:1, constant:5)
         
         let constraintBottom = NSLayoutConstraint(item:self.descriptionLbl, attribute:.bottom, relatedBy:.equal, toItem:self.contentView, attribute:.bottom, multiplier:1, constant:5)
         NSLayoutConstraint.activate([constraintLeading,constraintTrailing,constraintTop,constraintBottom])

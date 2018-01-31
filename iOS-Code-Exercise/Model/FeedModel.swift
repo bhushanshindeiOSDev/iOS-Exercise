@@ -5,7 +5,9 @@
 //  Created by Bhushan Shinde on 31/01/18.
 //  Copyright © 2018 Bhushan Shinde. All rights reserved.
 //
-
+/**
+ This is a parser helper with required properties.
+ **/
 import Foundation
 
 struct  FeedModel : Decodable{
